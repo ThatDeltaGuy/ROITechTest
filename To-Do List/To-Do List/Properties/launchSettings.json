@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "To-Do List": {
+      "commandName": "Project",
+      "commandLineArgs": "-t \"test\" -d \"04/08/2021\""
+    }
+  }
+}

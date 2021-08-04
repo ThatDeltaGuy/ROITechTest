@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CommandLine;
+using System;
+using System.Globalization;
+using System.Threading;
+using To_Do_List.Models;
 
 namespace To_Do_List
 {
@@ -6,7 +10,16 @@ namespace To_Do_List
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var parser = new Parser(with => {
+                with.ParsingCulture = new CultureInfo("en-GB");
+                with.HelpWriter = Console.Out;
+                });
+            var result = parser.ParseArguments<AddOptions>(args)
+                   .WithParsed<AddOptions>(o =>
+                   {
+                       var newTask = AddTask.AddNewTask(o);
+                      
+                   });
         }
     }
 }
