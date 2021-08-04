@@ -5,8 +5,8 @@ using System.Text;
 
 namespace To_Do_List.Models
 {
-    [Verb("add", true, HelpText = "Adds a Task")]
-    public class AddOptions
+    [Verb("add", false, HelpText = "Adds a Task")]
+    public class AddOptions: ITask
     {
         [Option('t', "title", Required = true, HelpText = "Task Title.")]
         public string Title { get; set; }

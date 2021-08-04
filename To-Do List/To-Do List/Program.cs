@@ -14,11 +14,15 @@ namespace To_Do_List
                 with.ParsingCulture = new CultureInfo("en-GB");
                 with.HelpWriter = Console.Out;
                 });
-            var result = parser.ParseArguments<AddOptions>(args)
+            var result = parser.ParseArguments<AddOptions, ViewOptions>(args)
                    .WithParsed<AddOptions>(o =>
                    {
                        var newTask = AddTask.AddNewTask(o);
                       
+                   })
+                   .WithParsed<ViewOptions>(o =>
+                   {
+                       ViewTask.ViewTasks(o);
                    });
         }
     }
