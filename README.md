@@ -87,3 +87,9 @@ Option | Description
   -f, --filter | Filters Tasks By Title or Due Date (in format dd/mm/yyyy)
   -s, --sort | Sort Tasks By Field.
   --help | Display help screen
+
+-------------------------
+
+# Data Storage
+
+Data is stored in a CSV created in the same folder as the .exe. The ID for each task is the line number, minus the header row.
