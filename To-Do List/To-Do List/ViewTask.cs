@@ -16,10 +16,18 @@ namespace To_Do_List
 
             var tasks = ReadFile(viewOptions.Sort,viewOptions.Filter);
 
-            DisplayTasks(tasks);
-
             if (viewOptions.Complete)
-                CompleteTasks(tasks.Select(o => o.Id).ToList());
+            {
+                var ids = tasks.Select(o => o.Id).ToList();
+                Console.WriteLine($"Are you sure you wish to update Task IDs:{string.Join(Config.Delimiter, ids)}? Y /N");
+                var response = Console.ReadLine();
+
+                if (response != "Y" && response != "y")
+                    return false;
+                SharedMethods.CompleteTasksById(ids);
+            }
+
+            DisplayTasks(tasks);
 
             return true;
         }
@@ -41,7 +49,7 @@ namespace To_Do_List
                 }
                 else
                 {
-                    tasks = tasks.Where(o => o.Title.Contains(filter)).ToList();
+                    tasks = tasks.Where(o => o.Title.ToLower().Contains(filter.ToLower())).ToList();
                 }
             }
 
@@ -73,6 +81,8 @@ namespace To_Do_List
         }
         public static void DisplayTasks(List<Task> tasks)
         {
+            Console.WriteLine($"Total number of Tasks Returned: {tasks.Count}");
+
             var props = typeof(Task).GetProperties();
             Console.WriteLine(string.Join(Config.Delimiter, props.Select(o => o.Name)));
             foreach (var task in tasks)
@@ -87,9 +97,6 @@ namespace To_Do_List
             }
         }
 
-        public static void CompleteTasks(List<int> taskLines)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

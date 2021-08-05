@@ -14,7 +14,7 @@ namespace To_Do_List
                 with.ParsingCulture = new CultureInfo("en-GB");
                 with.HelpWriter = Console.Out;
                 });
-            var result = parser.ParseArguments<AddOptions, ViewOptions>(args)
+            var result = parser.ParseArguments<AddOptions, ViewOptions, CompleteOptions>(args)
                    .WithParsed<AddOptions>(o =>
                    {
                        var newTask = AddTask.AddNewTask(o);
@@ -23,6 +23,10 @@ namespace To_Do_List
                    .WithParsed<ViewOptions>(o =>
                    {
                        ViewTask.ViewTasks(o);
+                   })
+                   .WithParsed<CompleteOptions>(o =>
+                   {
+                       CompleteTask.MarkTaskComplete(o);
                    });
         }
     }

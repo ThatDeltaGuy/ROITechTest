@@ -2,7 +2,7 @@
   "profiles": {
     "To-Do List": {
       "commandName": "Project",
-      "commandLineArgs": "-s \"Title\""
+      "commandLineArgs": "complete -i 4"
     }
   }
 }
