@@ -35,3 +35,55 @@ Desirable Functionality
 * Sorting the list
 * Filtering
 * Filter and Bulk update.  i.e. Set all tasks on Tuesday to done
+
+-------------------------
+
+# Usage
+
+ToDoList.exe [verb] [-options]
+
+Verbs
+----------------
+
+Verb | Description
+------------ | -------------
+add | Adds a Task
+view | (Default Verb) Views Tasks
+complete | Completes a Task
+help | Display more information on a specific command.
+
+
+add
+----------------
+
+ToDoList.exe add [-options]
+
+Option | Description
+------------ | -------------
+  -t, --title | (Required) Task Title
+  -d, --due-date | (Required) Task Due Date (in format dd/mm/yyyy)
+  --description | Task Description
+  --help | Display help screen
+  
+  
+complete
+----------------
+
+ToDoList.exe complete [-options]
+
+Option | Description
+------------ | -------------
+  -i, --id | Id of task to complete
+  --help | Display help screen
+
+view
+----------------
+
+ToDoList.exe view [-options]
+
+Option | Description
+------------ | -------------
+  -c, --complete | Sets Returned Tasks To Complete
+  -f, --filter | Filters Tasks By Title or Due Date (in format dd/mm/yyyy)
+  -s, --sort | Sort Tasks By Field.
+  --help | Display help screen
